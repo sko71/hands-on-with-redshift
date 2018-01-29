@@ -1,1 +1,1 @@
-# hands-on-with-redshift
+# bigdata-with-redshift
