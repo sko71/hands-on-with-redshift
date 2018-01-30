@@ -1,0 +1,5 @@
+{
+  "entries": [
+    {"url":"s3://abcretail/data/household_demographics_1_8.dat", "mandatory":true}
+  ]
+}

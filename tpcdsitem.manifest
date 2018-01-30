@@ -1,0 +1,5 @@
+{
+  "entries": [
+    {"url":"s3://abcretail/data/item_1_8.dat", "mandatory":true}
+  ]
+}

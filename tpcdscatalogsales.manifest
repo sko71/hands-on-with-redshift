@@ -1,0 +1,12 @@
+{
+  "entries": [
+    {"url":"s3://abcretail/data/catalog_sales_1_8.dat", "mandatory":true},
+    {"url":"s3://abcretail/data/catalog_sales_2_8.dat", "mandatory":true},
+    {"url":"s3://abcretail/data/catalog_sales_3_8.dat", "mandatory":true},
+    {"url":"s3://abcretail/data/catalog_sales_4_8.dat", "mandatory":true},
+    {"url":"s3://abcretail/data/catalog_sales_5_8.dat", "mandatory":true},
+    {"url":"s3://abcretail/data/catalog_sales_6_8.dat", "mandatory":true},
+    {"url":"s3://abcretail/data/catalog_sales_7_8.dat", "mandatory":true},
+    {"url":"s3://abcretail/data/catalog_sales_8_8.dat", "mandatory":true}
+  ]
+}

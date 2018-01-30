@@ -1,0 +1,5 @@
+{
+  "entries": [
+    {"url":"s3://abcretail/data/date_dim_1_8.dat", "mandatory":true}
+  ]
+}
