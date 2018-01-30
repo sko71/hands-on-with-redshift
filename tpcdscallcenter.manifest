@@ -1,5 +1,5 @@
 {
   "entries": [
-    {"url":"s3://abcretail/data/call_center_1_8.dat", "mandatory":true}
+    {"url":"s3://<your_bucket_name>/call_center_1_8.dat", "mandatory":true}
   ]
 }
