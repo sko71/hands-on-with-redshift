@@ -143,7 +143,7 @@ group by i_category, i_brand,
 
 
 -- query 57 (edited)
--- query referencing catalog_sales_dist_sort, item_all, date_dim_all , call_center_all
+-- query referencing catalog_sales_dist, item_all, date_dim_all , call_center_all
 select i_category, i_brand, cc_name, d_year, d_moy,
           sum(cs_sales_price) sum_sales,
           avg(sum(cs_sales_price)) over
