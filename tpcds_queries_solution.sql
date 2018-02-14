@@ -134,7 +134,7 @@ select i_category, i_brand, cc_name, d_year, d_moy,
           (partition by i_category, i_brand,
                      cc_name
            order by d_year, d_moy) rn
-from item_all, catalog_sales_dist, date_dim_all , call_center_all
+from item_all, catalog_sales, date_dim_all , call_center_all
 where cs_item_sk = i_item_sk and
        cs_sold_date_sk = d_date_sk and
        cc_call_center_sk= cs_call_center_sk
@@ -154,7 +154,7 @@ select i_category, i_brand, cc_name, d_year, d_moy,
             (partition by i_category, i_brand,
                       cc_name
              order by d_year, d_moy) rn
-from item_all, catalog_sales_dist_sort, date_dim_all , call_center_all
+from item_all, catalog_sales_dist, date_dim_all , call_center_all
 where cs_item_sk = i_item_sk and
        cs_sold_date_sk = d_date_sk and
        cc_call_center_sk= cs_call_center_sk
