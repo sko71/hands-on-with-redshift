@@ -91,7 +91,7 @@ CREATE TABLE public.item_all (
 	i_product_name char(50)
 )  diststyle all;
 
-CREATE TABLE public.catalog_sales (
+CREATE TABLE public.catalog_sales_dist (
 	cs_sold_date_sk int8,
 	cs_sold_time_sk int8,
 	cs_ship_date_sk int8,
@@ -107,7 +107,44 @@ CREATE TABLE public.catalog_sales (
 	cs_catalog_page_sk int8,
 	cs_ship_mode_sk int8,
 	cs_warehouse_sk int8,
-	cs_item_sk int8 NOT NULL,
+	cs_item_sk int8 NOT NULL DISTKEY,
+	cs_promo_sk int8,
+	cs_order_number int8 NOT NULL,
+	cs_quantity int8,
+	cs_wholesale_cost numeric(7,2),
+	cs_list_price numeric(7,2),
+	cs_sales_price numeric(7,2),
+	cs_ext_discount_amt numeric(7,2),
+	cs_ext_sales_price numeric(7,2),
+	cs_ext_wholesale_cost numeric(7,2),
+	cs_ext_list_price numeric(7,2),
+	cs_ext_tax numeric(7,2),
+	cs_coupon_amt numeric(7,2),
+	cs_ext_ship_cost numeric(7,2),
+	cs_net_paid numeric(7,2),
+	cs_net_paid_inc_tax numeric(7,2),
+	cs_net_paid_inc_ship numeric(7,2),
+	cs_net_paid_inc_ship_tax numeric(7,2),
+	cs_net_profit numeric(7,2)
+);
+
+CREATE TABLE public.catalog_sales_dist_sort (
+	cs_sold_date_sk int8 sortkey, 
+	cs_sold_time_sk int8,
+	cs_ship_date_sk int8,
+	cs_bill_customer_sk int8,
+	cs_bill_cdemo_sk int8,
+	cs_bill_hdemo_sk int8,
+	cs_bill_addr_sk int8,
+	cs_ship_customer_sk int8,
+	cs_ship_cdemo_sk int8,
+	cs_ship_hdemo_sk int8,
+	cs_ship_addr_sk int8,
+	cs_call_center_sk int8,
+	cs_catalog_page_sk int8,
+	cs_ship_mode_sk int8,
+	cs_warehouse_sk int8,
+	cs_item_sk int8 NOT NULL DISTKEY,
 	cs_promo_sk int8,
 	cs_order_number int8 NOT NULL,
 	cs_quantity int8,
