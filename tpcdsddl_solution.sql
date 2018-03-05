@@ -1,6 +1,3 @@
--- Distribution Style All
-
-
 CREATE TABLE public.call_center_all (
 	cc_call_center_sk int8 NOT NULL,
 	cc_call_center_id char(16) NOT NULL,
@@ -128,7 +125,7 @@ CREATE TABLE public.catalog_sales_dist (
 	cs_net_profit numeric(7,2)
 );
 
-CREATE TABLE public.customer (
+CREATE TABLE public.customer_all (
 	c_customer_sk int8 NOT NULL,
 	c_customer_id char(16) NOT NULL,
 	c_current_cdemo_sk int8,
@@ -147,17 +144,17 @@ CREATE TABLE public.customer (
 	c_login char(13),
 	c_email_address char(50),
 	c_last_review_date int8
-);
+) diststyle all;
 
-CREATE TABLE public.household_demographics (
+CREATE TABLE public.household_demographics_all (
 	hd_demo_sk int8 NOT NULL,
 	hd_income_band_sk int8 NOT NULL,
 	hd_buy_potential char(15),
 	hd_dep_count int8,
 	hd_vehicle_count int8
-);
+) diststyle all;
 
-CREATE TABLE public.store (
+CREATE TABLE public.store_all (
 	s_store_sk int8 NOT NULL,
 	s_store_id char(16) NOT NULL,
 	s_rec_start_date date,
@@ -187,7 +184,7 @@ CREATE TABLE public.store (
 	s_country varchar(20),
 	s_gmt_offset numeric(5,2),
 	s_tax_percentage numeric(5,2)
-);
+) diststyle all;
 
 CREATE TABLE public.store_sales (
 	ss_sold_date_sk int8,
@@ -215,12 +212,42 @@ CREATE TABLE public.store_sales (
 	ss_net_profit numeric(7,2)
 );
 
-CREATE TABLE public.web_sales (
-	ws_sold_date_sk int8,
+CREATE TABLE public.store_sales_dist_sort (
+	ss_sold_date_sk int8 sortkey,
+	ss_sold_time_sk int8,
+	ss_item_sk int8 NOT NULL,
+	ss_customer_sk int8,
+	ss_cdemo_sk int8,
+	ss_hdemo_sk int8,
+	ss_addr_sk int8,
+	ss_store_sk int8 distkey,
+	ss_promo_sk int8,
+	ss_ticket_number int8 NOT NULL,
+	ss_quantity int8,
+	ss_wholesale_cost numeric(7,2),
+	ss_list_price numeric(7,2),
+	ss_sales_price numeric(7,2),
+	ss_ext_discount_amt numeric(7,2),
+	ss_ext_sales_price numeric(7,2),
+	ss_ext_wholesale_cost numeric(7,2),
+	ss_ext_list_price numeric(7,2),
+	ss_ext_tax numeric(7,2),
+	ss_coupon_amt numeric(7,2),
+	ss_net_paid numeric(7,2),
+	ss_net_paid_inc_tax numeric(7,2),
+	ss_net_profit numeric(7,2))
+	distkey (ss_customer_sk)
+	sortkey(ss_customer_sk);
+);
+
+
+
+CREATE TABLE public.web_sales_dist_sort (
+	ws_sold_date_sk int8 sortkey,
 	ws_sold_time_sk int8,
 	ws_ship_date_sk int8,
 	ws_item_sk int8 NOT NULL,
-	ws_bill_customer_sk int8,
+	ws_bill_customer_sk int8 distkey,
 	ws_bill_cdemo_sk int8,
 	ws_bill_hdemo_sk int8,
 	ws_bill_addr_sk int8,
@@ -249,5 +276,6 @@ CREATE TABLE public.web_sales (
 	ws_net_paid_inc_tax numeric(7,2),
 	ws_net_paid_inc_ship numeric(7,2),
 	ws_net_paid_inc_ship_tax numeric(7,2),
-	ws_net_profit numeric(7,2)
-);
+	ws_net_profit numeric(7,2))
+  distkey (ws_bill_customer_sk)
+  sortkey(ws_bill_customer_sk);
