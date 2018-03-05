@@ -187,14 +187,14 @@ CREATE TABLE public.store_all (
 ) diststyle all;
 
 CREATE TABLE public.store_sales_dist_sort (
-	ss_sold_date_sk int8 sortkey,
+	ss_sold_date_sk int8,
 	ss_sold_time_sk int8,
 	ss_item_sk int8 NOT NULL,
 	ss_customer_sk int8,
 	ss_cdemo_sk int8,
 	ss_hdemo_sk int8,
 	ss_addr_sk int8,
-	ss_store_sk int8 distkey,
+	ss_store_sk int8,
 	ss_promo_sk int8,
 	ss_ticket_number int8 NOT NULL,
 	ss_quantity int8,
@@ -215,11 +215,11 @@ CREATE TABLE public.store_sales_dist_sort (
 );
 
 CREATE TABLE public.web_sales_dist_sort (
-	ws_sold_date_sk int8 sortkey,
+	ws_sold_date_sk int8,
 	ws_sold_time_sk int8,
 	ws_ship_date_sk int8,
 	ws_item_sk int8 NOT NULL,
-	ws_bill_customer_sk int8 distkey,
+	ws_bill_customer_sk int8,
 	ws_bill_cdemo_sk int8,
 	ws_bill_hdemo_sk int8,
 	ws_bill_addr_sk int8,
